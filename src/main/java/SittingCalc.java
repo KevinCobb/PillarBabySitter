@@ -22,14 +22,16 @@ public class SittingCalc {
 			if (beforeBedTimeA(currentHour)) {
 				totalPayA += dayTimeRateFamA;
 			} else if (afterBedTimeFamA(currentHour)) {
-				totalPayA += afterBedTimeRateFamA ;
+				totalPayA += afterBedTimeRateFamA;
 			}
 		}
 		return totalPayA;
 	}
+	
+	
 
 	private static boolean afterBedTimeFamA(double currentHour) {
-		return currentHour > bedTimeA;
+		return currentHour >= bedTimeA;
 	}
 
 	private static boolean beforeBedTimeA(double currentHour) {

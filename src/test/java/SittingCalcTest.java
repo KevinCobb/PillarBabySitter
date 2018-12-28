@@ -29,4 +29,11 @@ public class SittingCalcTest {
 	    SittingCalc(17, 18);
 	    assertEquals(15, time.calculatePayFamA());
 	}
+	
+	@Test
+	public void afterBedTimeRateShouldBe20() {
+		SittingCalc(23, 24);
+		assertEquals(20, time.calculatePayFamA());
+	}
 }
+
