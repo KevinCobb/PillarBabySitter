@@ -11,6 +11,9 @@ public class SittingCalc {
 	private final int afterBedTimeRateFamB = 4;
 	private final int bedTimeB = 22;
 	private final int afterMidnightRateB = 16;
+	private final int dayTimeRateC = 21;
+	private final int bedTimeC = 21;
+	private final int afterBedTimeRateC = 15;
 
 	public SittingCalc(double startTime, double endTime) {
 		this.startTime = Math.round(startTime);
@@ -55,7 +58,6 @@ public class SittingCalc {
 		return totalPayB;
 	}
 
-	
 	private boolean betweenBedTimeAndMidnightB(double currentHour) {
 		return currentHour > bedTimeB && currentHour <= midNight;
 	}
@@ -64,4 +66,24 @@ public class SittingCalc {
 		return currentHour <= bedTimeB;
 	}
 
+	public int calculatePayFamC() {
+		int totalPayC = 0;
+		for (double currentHour = startTime; currentHour < endTime; currentHour++) {
+			if (beforeBedTimeC(currentHour)) {
+				totalPayC += dayTimeRateC;
+			} else if (afterBedTimeC(currentHour)) {
+				totalPayC += afterBedTimeRateC;
+			}
+		}
+		return totalPayC;
+
+	}
+
+	private boolean afterBedTimeC(double currentHour) {
+		return currentHour >= 22;
+	}
+
+	private boolean beforeBedTimeC(double currentHour) {
+		return currentHour <= bedTimeC;
+	}
 }

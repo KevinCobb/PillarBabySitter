@@ -55,5 +55,11 @@ public class SittingCalcTest {
 		
 	}
 	
+	@Test 
+	public void dayPayRateForFamCShouldBe21() {
+		SittingCalc(17, 18);
+		assertEquals(21, time.calculatePayFamC());
+	}
+	
 }
 
