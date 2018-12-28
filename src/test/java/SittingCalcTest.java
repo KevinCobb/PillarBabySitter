@@ -35,5 +35,25 @@ public class SittingCalcTest {
 		SittingCalc(23, 24);
 		assertEquals(20, time.calculatePayFamA());
 	}
+	
+	@Test 
+	public void dayPayRateForFamBSHouldBe12() {
+		SittingCalc(17, 18);
+		assertEquals(12, time.calculatePayFamB());
+    }
+	
+	@Test
+	public void afterBedTimeRateForFamShouldBe4() {
+		SittingCalc(23, 24);
+		assertEquals(4, time.calculatePayFamB());
+	}
+	
+	@Test
+	public void afterMidnightRateForFamBShouldBe16() {
+		SittingCalc(24, 28);
+		assertEquals(16, time.calculatePayFamB());
+		
+	}
+	
 }
 
