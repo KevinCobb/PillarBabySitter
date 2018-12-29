@@ -1,12 +1,12 @@
 
 public class SittingCalc {
 
-	static double startTime;
-	static double endTime;
+	private static double startTime;
+	private static double endTime;
 	private final int midNight = 24;
-	private final static int dayTimeRateFamA = 15;
-	private final static int afterBedTimeRateFamA = 20;
-	private final static int bedTimeA = 23;
+	private final int dayTimeRateFamA = 15;
+	private final int afterBedTimeRateFamA = 20;
+	private final int bedTimeA = 23;
 	private final int dayTimeRateFamB = 12;
 	private final int afterBedTimeRateFamB = 4;
 	private final int bedTimeB = 22;
@@ -16,8 +16,8 @@ public class SittingCalc {
 	private final int afterBedTimeRateC = 15;
 
 	public SittingCalc(double startTime, double endTime) {
-		this.startTime = Math.round(startTime);
-		this.endTime = Math.round(endTime);
+		SittingCalc.startTime = Math.round(startTime);
+		SittingCalc.endTime = Math.round(endTime);
 	}
 
 	public static boolean timeValid() {
@@ -36,11 +36,11 @@ public class SittingCalc {
 		return totalPayA;
 	}
 
-	private static boolean afterBedTimeFamA(double currentHour) {
+	private boolean afterBedTimeFamA(double currentHour) {
 		return currentHour >= bedTimeA;
 	}
 
-	private static boolean beforeBedTimeA(double currentHour) {
+	private boolean beforeBedTimeA(double currentHour) {
 		return currentHour < bedTimeA;
 	}
 
