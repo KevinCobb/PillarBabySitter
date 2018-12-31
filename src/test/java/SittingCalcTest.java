@@ -5,69 +5,55 @@ import org.junit.Test;
 
 public class SittingCalcTest {
 	
-	private SittingCalc time;
-	
-	public void SittingCalc(double startTime, double endTime) {
-		time = new SittingCalc(startTime, endTime);
-	}
+	private SittingCalc timeWorked = new SittingCalc(17, 28);
 
 	@Test
 	public void whenStartTimeIsEnteredIsItAValidTime() {
-		SittingCalc(5, 10);
-		assertEquals(false, SittingCalc.timeValid());
-			}
-	
+		timeWorked.setStartTime(16);
+		timeWorked.setEndTime(29);
+		assertEquals(false, timeWorked.timeValid());
+	}
+
 	@Test
 	public void whenStartTimeIsEnteredItIsNowAValidTime() {
-		SittingCalc(17, 21);
-		assertEquals(true, SittingCalc.timeValid());
-		
+		assertEquals(true, timeWorked.timeValid());
 	}
-	
-	@Test 
+
+	@Test
 	public void dayPayRateForFamilyAShouldBe15() {
-	    SittingCalc(17, 18);
-	    assertEquals(15, time.calculatePayFamA());
+		assertEquals(15, timeWorked.calculatePayFamA(17, 18));
 	}
-	
+
 	@Test
 	public void afterBedTimeRateShouldBe20() {
-		SittingCalc(23, 24);
-		assertEquals(20, time.calculatePayFamA());
+		assertEquals(20, timeWorked.calculatePayFamA(23, 24));
 	}
-	
-	@Test 
-	public void dayPayRateForFamBSHouldBe12() {
-		SittingCalc(17, 18);
-		assertEquals(12, time.calculatePayFamB());
-    }
-	
+
 	@Test
-	public void afterBedTimeRateForFamShouldBe4() {
-		SittingCalc(23, 24);
-		assertEquals(4, time.calculatePayFamB());
+	public void dayPayRateForFamBSHouldBe12() {
+		assertEquals(12, timeWorked.calculatePayFamB(19, 20));
 	}
-	
+
+	@Test
+	public void afterBedTimeRateForFamShouldBe8() {
+		assertEquals(8, timeWorked.calculatePayFamB(22, 23));
+	}
+
 	@Test
 	public void afterMidnightRateForFamBShouldBe16() {
-		SittingCalc(24, 28);
-		assertEquals(16, time.calculatePayFamB());
-		
-	}
-	
-	@Test 
-	public void dayPayRateForFamCShouldBe21() {
-		SittingCalc(17, 18);
-		assertEquals(21, time.calculatePayFamC());
-	}
-	
-	@Test 
-	public void afterBedTimeRateForFamCSHouldBe15() {
-		SittingCalc(23, 24);
-		assertEquals(15, time.calculatePayFamC());
-		
-	}
-	
-	
-}
+		assertEquals(16, timeWorked.calculatePayFamB(24, 25));
 
+	}
+
+	@Test
+	public void dayPayRateForFamCShouldBe21() {
+		assertEquals(21, timeWorked.calculatePayFamC(20, 21));
+	}
+
+	@Test
+	public void afterBedTimeRateForFamCSHouldBe15() {
+		assertEquals(15, timeWorked.calculatePayFamC(22, 23));
+
+	}
+
+}
